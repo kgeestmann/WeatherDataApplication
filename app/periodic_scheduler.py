@@ -11,6 +11,7 @@ def weather_task(city: str):
         if 'error' not in data:
             database.insert_weather_data(data)
             print(f"Wetterdaten für {city} erfolgreich gespeichert.")
+            print(weather_api.get_weather_data(city))
         else:
             print(f"API Fehler: {data['error']}")
     return task

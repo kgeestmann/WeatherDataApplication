@@ -12,14 +12,16 @@ def create_config_db():
     try:
         conn = sqlite3.connect(CONFIG_DB_PATH)  # <-- hier Config-DB
         cursor = conn.cursor()
+
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS config (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                city TEXT UNIQUE,
+                city TEXT,
                 interval INTEGER
             )
         ''')
         conn.commit()
+
     except sqlite3.Error as e:
         print(f"Config DB Error: {e}")
     finally:
@@ -36,10 +38,11 @@ def add_city_config(city: str, interval: int):
         conn = sqlite3.connect(CONFIG_DB_PATH)
         cursor = conn.cursor()
         cursor.execute(
-            "INSERT OR REPLACE INTO config (city, interval) VALUES (?, ?)",
+            "INSERT INTO config (city, interval) VALUES (?, ?)",
             (city, interval)
         )
         conn.commit()
+
     except sqlite3.Error as e:
         print(f"Config DB Insert Error: {e}")
     finally:
@@ -48,12 +51,12 @@ def add_city_config(city: str, interval: int):
 def get_all_configs():
     """
     Gibt alle gespeicherten Konfigurationen zurück
-    :return: Liste von Tuples (city, interval)
+    :return: Liste von Tuples (id, city, interval)
     """
     try:
         conn = sqlite3.connect(CONFIG_DB_PATH)
         cursor = conn.cursor()
-        cursor.execute("SELECT city, interval FROM config")
+        cursor.execute("SELECT * FROM config")
         rows = cursor.fetchall()
         return rows
     except sqlite3.Error as e:
