@@ -9,6 +9,12 @@ load_dotenv()
 API_KEY = os.getenv('OPENWEATHER_API_KEY')
 
 def get_weather_data(city_name: str) -> dict:
+    """
+    Ruft aktuelle Wetterdaten für eine Stadt ab
+
+    :param city_name: Name der Stadt
+    :return: Dictionary mit Keys city, description, temperature, humidity, rain_1h, snow_1h, timestamp oder 'error'
+    """
     # API-Key prüfen
     if not API_KEY:
             raise ValueError("API-Key nicht gefunden!")
