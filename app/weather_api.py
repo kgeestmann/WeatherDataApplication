@@ -8,16 +8,26 @@ load_dotenv()
 # API-Key auslesen
 API_KEY = os.getenv('OPENWEATHER_API_KEY')
 
-# API-Key prüfen
-if not API_KEY:
-    raise ValueError(
-        "API-Key nicht gefunden! "
-        "Erstellen Sie eine Datei '.env' basierend auf '.env_example' "
-        "und tragen dort deinen API-Key ein."
-    )
+def get_weather_data(city_name: str) -> dict:
+    # API-Key prüfen
+    if not API_KEY:
+            raise ValueError("API-Key nicht gefunden!")
 
-city_name = "Bremen"
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units=metric"
 
-url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}"
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()  # HTTP-Fehler abfangen
+        data = response.json()
 
-print('success')
+        return {
+            "city": city_name,
+            "description": data["weather"][0]["description"],
+            "temperature": data["main"]["temp"],
+            "humidity": data["main"]["humidity"],
+            "rain_1h": data.get("rain", {}).get("1h", 0.0),
+            "snow_1h": data.get("snow", {}).get("1h", 0.0),
+            "timestamp": data["dt"]
+        }
+    except requests.RequestException as e:
+        return {"error": str(e)}
