@@ -1,34 +1,25 @@
-from app import weather_api, database
+from app import database
+from app.periodic_scheduler import start_scheduler, weather_task
+import time
 
 def main():
+    city_name = "Bremen"
+    interval = 5
 
     database.create_db()
 
-    # Fest definierter Ort
-    city_name = 'Bremen'
+    task = weather_task(city_name)
 
-    weather_data = weather_api.get_weather_data(city_name)
+    # Scheduler starten
+    start_scheduler(task, interval)
+    print(f"Scheduler gestartet für {city_name}, alle {interval} Sekunden.")
 
-    if 'error' not in weather_data:
-        database.insert_weather_data(weather_data)
-        print(f"Wetterdaten für {city_name} erfolgreich gespeichert.")
-    else:
-        print("API Fehler:", weather_data['error'])
-
-    # Test-Print, ob alles gespeichert wurde
-    print("Aktuell in DB gespeicherte Wetterdaten:")
-    import sqlite3
-    from app.database import DB_PATH
-
+    # Hauptthread aktiv halten
     try:
-        conn = sqlite3.connect(DB_PATH)
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM weather")
-        rows = cursor.fetchall()
-        for row in rows:
-            print(row)
-    finally:
-        conn.close()
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("Programm beendet.")
 
 if __name__ == "__main__":
-        main()
+    main()
