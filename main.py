@@ -4,9 +4,10 @@ import time
 
 def main():
     city_name = "Bremen"
+    #interval = 1800 # 30 Minuten
     interval = 5
 
-    database.create_db()
+    database.create_weather_db()
 
     task = weather_task(city_name)
 

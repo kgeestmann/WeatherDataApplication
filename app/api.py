@@ -4,7 +4,7 @@ import sqlite3
 
 app = FastAPI()
 
-DB_PATH = database.DB_PATH
+DB_PATH = database.WEATHER_DB_PATH
 
 @app.get("/weather")
 def get_weather(city: str | None = None):
