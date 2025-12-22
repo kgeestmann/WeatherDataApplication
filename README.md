@@ -45,6 +45,16 @@ Damit die Anwendung auf die Wetter-API zugreifen kann, muss ein API-Key hinterle
 Die Anwendung liest den Key automatisch aus `.env`, sodass er nicht im Code oder im GitHub-Repository sichtbar ist.
 
 ---
+
+## Lokalen FastAPI-Server starten
+
+Um den API-Server zu starten, verwende:
+
+```bash
+uvicorn app.api:app --reload
+```
+---
+
 # Quellen
 - OpenWeatherMap API Tutorial (https://youtu.be/aQZzMJgPMqQ?si=50JCfIDU3Oh1jdju)
 - OpenWeatherMap API Dokumentation (https://openweathermap.org/current)
