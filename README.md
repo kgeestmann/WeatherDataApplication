@@ -44,4 +44,8 @@ Damit die Anwendung auf die Wetter-API zugreifen kann, muss ein API-Key hinterle
 
 Die Anwendung liest den Key automatisch aus `.env`, sodass er nicht im Code oder im GitHub-Repository sichtbar ist.
 
-
+---
+# Quellen
+- OpenWeatherMap API Tutorial (https://youtu.be/aQZzMJgPMqQ?si=50JCfIDU3Oh1jdju)
+- OpenWeatherMap API Dokumentation (https://openweathermap.org/current)
+- SQLite Tutorial (https://youtube.com/playlist?list=PLJJcOjd3n1ZfwZKYMu_JSs0xSejPsQlav&si=8Og2eIMdopEc4nVv)
