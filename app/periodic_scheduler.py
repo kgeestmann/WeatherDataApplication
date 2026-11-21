@@ -28,7 +28,6 @@ def start_scheduler(task, interval: int):
             try:
                 task()
             except Exception as e:
-                # Ein fehlgeschlagener Durchlauf darf den Scheduler nicht beenden.
                 print(f"Fehler beim Wetter-Abruf: {e}")
             time.sleep(interval)
 
