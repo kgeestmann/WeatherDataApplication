@@ -71,7 +71,6 @@ def main():
         print("Programm beendet.")
 
 if __name__ == "__main__":
-    # Ohne Key würde jeder Abruf im Hintergrund-Thread fehlschlagen, ohne dass man es merkt.
     if not weather_api.API_KEY:
         raise SystemExit("OPENWEATHER_API_KEY fehlt. Kopiere .env_example nach .env und trage deinen Key ein.")
     main()
