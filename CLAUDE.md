@@ -17,7 +17,9 @@ There are no tests and no linter yet.
 
 ## Code comments
 
-Don't add comments or docstrings to new or changed code. Explanations go into the PR description or the commit message. Never describe the old or broken behaviour in the code. Leave existing comments alone unless the code they describe changes.
+- Give functions and methods a short docstring directly under the signature that says what they do. Mention parameters or return values only when they aren't obvious.
+- Keep inline comments short, and add them only where the code isn't self-explanatory. They describe the current code.
+- Don't write comments about history or the change itself ("previously", "now", "fixed", "without this … would …"), comments that only restate the code, or long justifications. Those belong in the commit message or the PR description.
 
 ## Architecture
 
