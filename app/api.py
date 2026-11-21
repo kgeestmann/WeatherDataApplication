@@ -6,6 +6,8 @@ app = FastAPI()
 
 DB_PATH = database.WEATHER_DB_PATH
 
+database.create_weather_db()
+
 @app.get("/weather")
 def get_weather(city: str | None = None):
     """
