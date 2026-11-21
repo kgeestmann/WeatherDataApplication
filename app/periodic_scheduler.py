@@ -25,7 +25,11 @@ def start_scheduler(task, interval: int):
     """
     def loop():
         while True:
-            task()
+            try:
+                task()
+            except Exception as e:
+                # Ein fehlgeschlagener Durchlauf darf den Scheduler nicht beenden.
+                print(f"Fehler beim Wetter-Abruf: {e}")
             time.sleep(interval)
 
     thread = threading.Thread(target=loop, daemon=True)

@@ -53,6 +53,7 @@ Damit die Anwendung auf die Wetter-API zugreifen kann, muss ein API-Key hinterle
 2. In `.env` den Platzhalter `dein_api_key_hier` mit deinem echten API-Key von **OpenWeatherMap** ersetzen
 
 Die Anwendung liest den Key automatisch aus `.env`, sodass er nicht im Code oder im GitHub-Repository sichtbar ist.
+Fehlt der Key, bricht `python main.py` direkt beim Start mit einer entsprechenden Meldung ab.
 
 ---
 
