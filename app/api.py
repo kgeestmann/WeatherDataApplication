@@ -6,6 +6,9 @@ app = FastAPI()
 
 DB_PATH = database.WEATHER_DB_PATH
 
+# Die API kann vor main.py gestartet werden; ohne Tabelle würde jede Abfrage mit 500 scheitern.
+database.create_weather_db()
+
 @app.get("/weather")
 def get_weather(city: str | None = None):
     """
