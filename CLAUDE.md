@@ -46,6 +46,8 @@ Every change (feature, fix or docs) starts from a GitHub issue and gets its own 
 5. **PR:** put `Closes #<n>` in the description so the merge closes the issue and links it to the PR.
 6. **Review and merge:** the `claude-code-review` workflow reviews each PR automatically. For an on-demand review or a question, write `@claude` in a PR or issue comment. Act on valid findings, then merge with `gh pr merge <n> --merge --delete-branch`.
 
+No confirmation is needed in this repo to commit, push, open or merge your own PRs (approved by the owner). Force-push and history rewrites still need explicit approval.
+
 Gotchas for the review workflow:
 
 - It does not review PRs that change `.github/workflows/claude*.yml`, because the action only runs when the workflow file matches `master`.
