@@ -35,6 +35,16 @@ manuell erfassen zu müssen.
 
 ---
 
+## Abhängigkeiten installieren
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate        # Windows (macOS/Linux: source .venv/bin/activate)
+pip install -r requirements.txt
+```
+
+---
+
 ## Lokale API Keys einrichten
 
 Damit die Anwendung auf die Wetter-API zugreifen kann, muss ein API-Key hinterlegt werden:

@@ -1,5 +1,3 @@
-from pydantic_core.core_schema import date_schema
-
 from app import database
 from app.periodic_scheduler import start_scheduler, weather_task
 import time
