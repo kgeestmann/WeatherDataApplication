@@ -15,6 +15,10 @@ uvicorn app.api:app --reload        # GET /weather and GET /weather?city=<name>
 
 There are no tests and no linter yet.
 
+## Code comments
+
+Don't add comments or docstrings to new or changed code. Explanations go into the PR description or the commit message. Never describe the old or broken behaviour in the code. Leave existing comments alone unless the code they describe changes.
+
 ## Architecture
 
 - **Two independent processes, one database.** `main.py` (CLI + fetch loop) writes, and `app/api.py` (FastAPI) reads. They share nothing except the SQLite files `weather.db` and `config.db` in the repo root (gitignored, paths in `app/database.py`).
